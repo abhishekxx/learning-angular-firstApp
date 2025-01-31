@@ -16,11 +16,19 @@ import { ProductCardComponent } from "./product-card/product-card/product-card.c
   styles: ``
 })
 export class ProductsListComponent {
+
+  async ngOnInit() {
+    const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+    // const products = await res.json();
+    const data = await res.json();
+    this.products.set(data);
+  }
+
   products = signal<Product[]>([
-    { id: 1, title: 'Product 1', price: 10, image: 'https://picsum.photos/200/300', stock: 10 },
-    { id: 2, title: 'Product 2', price: 20, image: 'https://picsum.photos/200/300', stock: 0  },
-    { id: 3, title: 'Product 3', price: 20, image: 'https://picsum.photos/200/300', stock: 8  },
-    { id: 4, title: 'Product 4', price: 20, image: 'https://picsum.photos/200/300', stock: 0  },
+    // { id: 1, title: 'Product 1', price: 10, image: 'https://picsum.photos/200/300', stock: 10 },
+    // { id: 2, title: 'Product 2', price: 20, image: 'https://picsum.photos/200/300', stock: 0  },
+    // { id: 3, title: 'Product 3', price: 20, image: 'https://picsum.photos/200/300', stock: 8  },
+    // { id: 4, title: 'Product 4', price: 20, image: 'https://picsum.photos/200/300', stock: 0  },
   ]);
 }
 
